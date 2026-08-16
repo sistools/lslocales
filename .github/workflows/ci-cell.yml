@@ -134,10 +134,11 @@ jobs:
           cmake_configure "$DIAGSRC" "$DIAGBUILD"
           cmake_build_install "$DIAGBUILD"
 
-          # sistools-common-c (required for usage helpers)
+          # sistools-common-c (usage helpers: stcc_show_help / usage.h)
+          # Clone the `usage` branch until those APIs are on master.
           STCCSRC="${RUNNER_TEMP}/sistools-common-c-src"
           STCCBUILD="${RUNNER_TEMP}/sistools-common-c-build"
-          git clone --depth 1 https://github.com/sistools/sistools-common-c "$STCCSRC"
+          git clone --depth 1 --branch usage https://github.com/sistools/sistools-common-c "$STCCSRC"
           cmake_configure "$STCCSRC" "$STCCBUILD"
           cmake_build_install "$STCCBUILD"
 

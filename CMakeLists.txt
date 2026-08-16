@@ -204,7 +204,7 @@ message("-- CMake package Diagnosticism found (version ${DIAGNOSTICISM_VERSION};
 # ############################
 # sistools-common-c
 
-set(sistools-common-c_REQUIRED_VERSION_ 0.0)
+set(sistools-common-c_REQUIRED_VERSION_ 0.1)
 
 find_package(sistools-common-c ${sistools-common-c_REQUIRED_VERSION_} REQUIRED)
 
