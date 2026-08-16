@@ -226,3 +226,23 @@ jobs:
             test -x "$PREFIX/bin/${PROJECT}"
           fi
           test -f "$PREFIX/share/man/man1/${PROJECT}.1" || test -f "$PREFIX/man/man1/${PROJECT}.1"
+
+      - name: Smoke run
+        shell: bash
+        run: |
+          set -euo pipefail
+          PREFIX="${RUNNER_TEMP}/install-prefix"
+          PROJECT="$(tr -d '[:space:]' < .sis/project_name.txt)"
+          if [ "${{ inputs.c-compiler }}" = "mingw" ]; then
+            export PATH="/mingw64/bin:$PATH"
+          fi
+          if [ "${{ inputs.c-compiler }}" = "cl" ] || [ "${{ inputs.c-compiler }}" = "mingw" ]; then
+            EXE="$PREFIX/bin/${PROJECT}.exe"
+          else
+            EXE="$PREFIX/bin/${PROJECT}"
+          fi
+          "$EXE" --version
+          "$EXE" --version | grep -F -q "$PROJECT"
+          OUT="$("$EXE" --names-only)"
+          test -n "$OUT"
+          printf '%s\n' "$OUT" | head -n 20
