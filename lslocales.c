@@ -57,19 +57,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-#if defined(_WIN32)
+#if 0
+#elif defined(_WIN32)
 
 # ifndef WIN32_LEAN_AND_MEAN
 #  define WIN32_LEAN_AND_MEAN
 # endif
 # include <windows.h>
-
 #else /* ? _WIN32 */
 
 # include <dirent.h>
 # include <sys/stat.h>
 # include <unistd.h>
-
 #endif /* _WIN32 */
 
 
@@ -77,9 +76,9 @@
  * constants
  */
 
-#define LSLOCALES_ID_CCH                                    64
-#define LSLOCALES_NAME_CCH                                  128
-#define LSLOCALES_INITIAL_CAPACITY                          64
+#define LSLOCALES_ID_CCH                                    (64)
+#define LSLOCALES_NAME_CCH                                  (128)
+#define LSLOCALES_INITIAL_CAPACITY                          (64)
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -296,7 +295,8 @@ write_entry(
 }
 
 
-#if defined(_WIN32)
+#if 0
+#elif defined(_WIN32)
 
 /* EnumSystemLocalesA has no user-data argument. */
 static locale_list_t* s_win_list;
@@ -389,7 +389,6 @@ collect_windows_locales(
 
     return list->err;
 }
-
 #else /* ? _WIN32 */
 
 static
@@ -547,7 +546,6 @@ collect_posix_locales(
 
     return list->err;
 }
-
 #endif /* _WIN32 */
 
 
@@ -570,9 +568,11 @@ sistool_lslocales(
     locale_list_init(&list);
 
 #if defined(_WIN32)
+
     rc = collect_windows_locales(&list, flags);
 #else /* ? _WIN32 */
-    rc = collect_posix_locales(&list);
+
+rc = collect_posix_locales(&list);
 #endif /* _WIN32 */
 
     if (0 != rc)

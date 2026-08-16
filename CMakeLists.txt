@@ -42,11 +42,11 @@ string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
 set(RX_PROJ_TAG "${PROJECT_NAME_UPPER}")
 set(RX_WS "[ \t]")
 file(READ "${CMAKE_SOURCE_DIR}/${PROJECT_NAME_LOWER}.h" _header_file)
-string(REGEX MATCH "#${RX_WS}*define${RX_WS}+SISTOOL_?${RX_PROJ_TAG}_VER_MAJOR${RX_WS}+([0-9]+)" MAJOR_DUMMY ${_header_file})
+string(REGEX MATCH "#${RX_WS}*define${RX_WS}+SISTOOL_?${RX_PROJ_TAG}_VER_MAJOR${RX_WS}+([0-9]+)" MAJOR_DUMMY "${_header_file}")
 set(_VERSION_MAJOR ${CMAKE_MATCH_1})
-string(REGEX MATCH "#${RX_WS}*define${RX_WS}+SISTOOL_?${RX_PROJ_TAG}_VER_MINOR${RX_WS}+([0-9]+)" MINOR_DUMMY ${_header_file})
+string(REGEX MATCH "#${RX_WS}*define${RX_WS}+SISTOOL_?${RX_PROJ_TAG}_VER_MINOR${RX_WS}+([0-9]+)" MINOR_DUMMY "${_header_file}")
 set(_VERSION_MINOR ${CMAKE_MATCH_1})
-string(REGEX MATCH "#${RX_WS}*define${RX_WS}+SISTOOL_?${RX_PROJ_TAG}_VER_PATCH${RX_WS}+([0-9]+)" PATCH_DUMMY ${_header_file})
+string(REGEX MATCH "#${RX_WS}*define${RX_WS}+SISTOOL_?${RX_PROJ_TAG}_VER_PATCH${RX_WS}+([0-9]+)" PATCH_DUMMY "${_header_file}")
 set(_VERSION_PATCH ${CMAKE_MATCH_1})
 
 # set project version number here
@@ -204,7 +204,7 @@ message("-- CMake package Diagnosticism found (version ${DIAGNOSTICISM_VERSION};
 # ############################
 # sistools-common-c
 
-set(sistools-common-c_REQUIRED_VERSION_ 0.1)
+set(sistools-common-c_REQUIRED_VERSION_ 0.0)
 
 find_package(sistools-common-c ${sistools-common-c_REQUIRED_VERSION_} REQUIRED)
 
