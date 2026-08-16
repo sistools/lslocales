@@ -1,7 +1,7 @@
 # lslocales - Changes <!-- omit in toc -->
 
 
-## 0.0.1-beta1 - 16th August 2026
+## 0.1.0-beta1 - 16th August 2026
 
 * Initial port from internal `2021-dev/…/tools/lslocales` into **sistools**;
 * C CLI with **CLASP** plus **sistools-common-c** `--help` / `--version`;
