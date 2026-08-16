@@ -1,0 +1,62 @@
+.\" Copyright (c) 2021-2026, Matthew Wilson and Synesis Information Systems
+.\" Copyright (c) 2001-2019, Matthew Wilson and Synesis Software
+.\"
+.TH LSLOCALES 1 "August 2026" "lslocales 0.1.0-beta1" "User Commands"
+.SH NAME
+lslocales \- list installed system locales
+.SH SYNOPSIS
+.B lslocales
+[\fIOPTIONS\fR]
+.SH DESCRIPTION
+.B lslocales
+lists locales available on the host.
+.PP
+On Windows, identifiers are hex LCIDs from
+.B EnumSystemLocales
+and names come from
+.B GetLocaleInfo
+.RB ( LOCALE_SNAME ,
+falling back to
+.BR LOCALE_SLANGUAGE ).
+On POSIX, names come from
+.BR locale (1)
+.RB ( \-a ),
+with a directory-scan fallback.
+.PP
+Default output is one locale per line as
+.IR id TAB name ,
+sorted by name. When the id and name are identical a single column is
+emitted.
+.SH OPTIONS
+.TP
+.BR \-n ", " \-\-names\-only
+Emit locale names only.
+.TP
+.BR \-c ", " \-\-codes\-only
+Emit locale identifiers only.
+.TP
+.BR \-S ", " \-\-supported
+List supported locales rather than only installed locales (Windows). No-op
+on POSIX when the inventory is not split.
+.TP
+.B \-\-no\-sort
+Preserve enumeration order rather than sorting by name.
+.TP
+.B \-\-help
+Display help and exit.
+.TP
+.B \-\-version
+Display version information and exit.
+.SH SEE ALSO
+.BR locale (1)
+.SH REPORTING BUGS
+.B lslocales
+is an open-source project. Defect reports, feature requests, and
+contributions are welcome at
+https://github.com/sistools/lslocales.
+.SH AUTHOR
+Matthew Wilson and Synesis Information Systems
+.br
+Copyright (c) 2021\-2026, Matthew Wilson and Synesis Information Systems
+.br
+Copyright (c) 2001\-2019, Matthew Wilson and Synesis Software
