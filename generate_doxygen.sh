@@ -5,6 +5,14 @@ Dir=$(cd "$(dirname "$ScriptPath")" && pwd)
 Basename=$(basename "$ScriptPath")
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
 
+if command -v tput > /dev/null; then
+  SisClr_Red=${FG_RED:-$(tput setaf 1)}
+  SisClr_None=${FD_NONE:-$(tput sgr0)}
+else
+  SisClr_Red=
+  SisClr_None=
+fi
+
 case ${1:-} in
   "")
     ;;
@@ -14,14 +22,14 @@ case ${1:-} in
     exit 0
     ;;
   *)
-    >&2 printf '%s: unrecognised argument %s; use --help for usage\n' "$ScriptPath" "$1"
+    >&2 printf '%s%s: unrecognised argument %s%s; use --help for usage\n' "$SisClr_Red" "$ScriptPath" "$1" "$SisClr_None"
     exit 1
     ;;
 esac
 
 cd "$Dir" || exit 1
 command -v doxygen >/dev/null 2>&1 || {
-  >&2 printf '%s: doxygen not found on PATH\n' "$ScriptPath"
+  >&2 printf '%s%s: doxygen not found on PATH%s\n' "$SisClr_Red" "$ScriptPath" "$SisClr_None"
   exit 1
 }
 
