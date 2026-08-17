@@ -1,10 +1,9 @@
 #! /bin/bash
 
 ScriptPath=$0
-Dir=$(cd $(dirname "$ScriptPath"); pwd)
+Dir=$(cd "$(dirname "$ScriptPath")" && pwd)
 Basename=$(basename "$ScriptPath")
-ProjectNameFile="$Dir/.sis/project_name.txt"
-ProjectName=$(tr -d '[:space:]' < "$ProjectNameFile")
+
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
 if [[ -n "$MSYSTEM" ]]; then
 
@@ -15,6 +14,8 @@ else
   DefaultMakeCmd=make
 fi
 MakeCmd=${SIS_CMAKE_MAKE_COMMAND:-${SIS_CMAKE_COMMAND:-$DefaultMakeCmd}}
+ProjectNameFile="$Dir/.sis/project_name.txt"
+ProjectName=$(tr -d '[:space:]' < "$ProjectNameFile")
 
 Configuration=Release
 CStandard=
@@ -172,17 +173,17 @@ cd $CMakeDir
 
 echo "Executing CMake for ${SisClr_Blue}${SisClr_Bold}${ProjectName}${SisClr_None} (in ${SisClr_Blue}${SisClr_Bold}${CMakeDir}${SisClr_None})"
 
+if [ -z "$CStandard" ]; then CMakeCStandardVariable="" ; else CMakeCStandardVariable="-DCMAKE_C_STANDARD=$CStandard" ; fi
 if [ $MSVC_MT -eq 0 ]; then CMakeMsvcMtFlag="OFF" ; else CMakeMsvcMtFlag="ON" ; fi
 if [ -z "$STLSoftDirGiven" ]; then CMakeSTLSoftVariable="" ; else CMakeSTLSoftVariable="-DSTLSOFT=$STLSoftDirGiven/" ; fi
 if [ $TestingDisabled -eq 0 ]; then CMakeBuildTestingFlag="ON" ; else CMakeBuildTestingFlag="OFF" ; fi
 if [ $VerboseMakefile -eq 0 ]; then CMakeVerboseMakefileFlag="OFF" ; else CMakeVerboseMakefileFlag="ON" ; fi
-if [ -z "$CStandard" ]; then CMakeCStandardVariable="" ; else CMakeCStandardVariable="-DCMAKE_C_STANDARD=$CStandard" ; fi
 
 if [ $MinGW -ne 0 ]; then
 
   cmake \
-    $CMakeSTLSoftVariable \
     $CMakeCStandardVariable \
+    $CMakeSTLSoftVariable \
     -DBUILD_TESTING:BOOL=$CMakeBuildTestingFlag \
     -DCMAKE_BUILD_TYPE=$Configuration \
     -G "MinGW Makefiles" \
@@ -192,8 +193,8 @@ if [ $MinGW -ne 0 ]; then
 else
 
   cmake \
-    $CMakeSTLSoftVariable \
     $CMakeCStandardVariable \
+    $CMakeSTLSoftVariable \
     -DBUILD_TESTING:BOOL=$CMakeBuildTestingFlag \
     -DCMAKE_BUILD_TYPE=$Configuration \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$CMakeVerboseMakefileFlag \
