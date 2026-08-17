@@ -55,11 +55,11 @@ set(PROJECT_VERSION_MINOR ${_VERSION_MINOR})
 set(PROJECT_VERSION_PATCH ${_VERSION_PATCH})
 set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
 
-# Default C standard is C11; override via prepare_cmake.sh --c-standard {99|11|17|23}
+# Default C standard is C17; override via prepare_cmake.sh --c-standard {99|11|17|23}
 # (passes -DCMAKE_C_STANDARD=N) or by setting CMAKE_C_STANDARD on the cmake command line.
 if(NOT CMAKE_C_STANDARD)
 
-	set(CMAKE_C_STANDARD 11)
+	set(CMAKE_C_STANDARD 17)
 endif()
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON) # GNU extensions and POSIX standard
