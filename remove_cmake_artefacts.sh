@@ -1,11 +1,12 @@
 #! /bin/bash
 
 ScriptPath=$0
-Dir=$(cd $(dirname "$ScriptPath"); pwd)
+Dir=$(cd "$(dirname "$ScriptPath")" && pwd)
 Basename=$(basename "$ScriptPath")
+
+CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
 ProjectNameFile="$Dir/.sis/project_name.txt"
 ProjectName=$(tr -d '[:space:]' < "$ProjectNameFile")
-CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
 
 Directories=(
   CMakeFiles
@@ -113,7 +114,7 @@ done
 
 if [ ! -d "$CMakeDir" ]; then
 
-  echo "$ScriptPath: CMake build directory '$CMakeDir' not found so nothing to do; use script 'prepare_cmake.sh' if you wish to prepare CMake artefacts"
+  echo "$ScriptPath: CMake build directory '$CMakeDir' ${SisClr_Red}${SisClr_Bold}not found${SisClr_None} so nothing to do; use script 'prepare_cmake.sh' if you wish to prepare CMake artefacts"
 
   exit 0
 else
