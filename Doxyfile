@@ -7,10 +7,10 @@ PROJECT_NUMBER         = 0.1.0
 OUTPUT_DIRECTORY       = _build/doxygen
 CREATE_SUBDIRS         = NO
 
-INPUT                  = lslocales.h \
+INPUT                  = doc \
                          lslocales.c \
-                         entry.c \
-                         doc
+                         lslocales.h \
+                         entry.c
 FILE_PATTERNS          = *.h \
                          *.c \
                          *.md
