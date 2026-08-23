@@ -1,9 +1,9 @@
 # lslocales - News <!-- omit in toc -->
 
 
-| Date             | News Item                                                         |
+| Date             | News Item         |
 | ---------------- | ----------------------------------------------------------------- |
-| 16th August 2026 | Initial port of lslocales from internal repository into sistools as 0.1.0-beta1 |
+| 24th August 2026 | [0.1.0 released](https://github.com/sistools/lslocales/releases/tag/0.1.0) |
 
 
 <!-- ########################### end of file ########################### -->
