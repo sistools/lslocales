@@ -138,7 +138,7 @@ jobs:
           # Clone the `usage` branch until those APIs are on master.
           STCCSRC="${RUNNER_TEMP}/sistools-common-c-src"
           STCCBUILD="${RUNNER_TEMP}/sistools-common-c-build"
-          git clone --depth 1 --branch usage https://github.com/sistools/sistools-common-c "$STCCSRC"
+          git clone --depth 1 --branch dev https://github.com/sistools/sistools-common-c "$STCCSRC"
           cmake_configure "$STCCSRC" "$STCCBUILD"
           cmake_build_install "$STCCBUILD"
 
