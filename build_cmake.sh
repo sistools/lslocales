@@ -1,20 +1,20 @@
 #! /bin/bash
 
 ScriptPath=$0
-Dir=$(cd $(dirname "$ScriptPath"); pwd)
+Dir=$(cd "$(dirname "$ScriptPath")" && pwd)
 Basename=$(basename "$ScriptPath")
-ProjectNameFile="$Dir/.sis/project_name.txt"
-ProjectName=$(tr -d '[:space:]' < "$ProjectNameFile")
+
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
 if [[ -n "$MSYSTEM" ]]; then
 
   DefaultMakeCmd=mingw32-make.exe
-  MinGW=1
 else
 
   DefaultMakeCmd=make
 fi
 MakeCmd=${SIS_CMAKE_MAKE_COMMAND:-${SIS_CMAKE_COMMAND:-$DefaultMakeCmd}}
+ProjectNameFile="$Dir/.sis/project_name.txt"
+ProjectName=$(tr -d '[:space:]' < "$ProjectNameFile")
 
 IgnoreRemainingFlagsAndOptions=0
 Targets=()
@@ -23,7 +23,7 @@ Targets=()
 # ##########################################################
 # colours
 
-if command -v tput > /dev/null; then
+if [ -n "${TERM:-}" ] && [ -t 1 ] && command -v tput >/dev/null 2>&1; then
 
   SisClr_Blue=${FG_BLUE:-$(tput setaf 4)}
   SisClr_Red=${FG_RED:-$(tput setaf 1)}

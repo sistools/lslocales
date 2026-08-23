@@ -93,12 +93,14 @@ For unit-testing, **lslocales** depends additionally on:
 Other (similar) projects include:
 
 * [**chomp**](https://github.com/sistools/chomp);
-* [**errni**](https://github.com/sistools/errni);
+* [**errni**](https://github.com/sistools/errni) (errno on all platforms, and also GetLastError codes on Windows);
 * [**lnunique**](https://github.com/sistools/lnunique);
 * [**lstrip**](https://github.com/sistools/lstrip);
-* [**mksock**](https://github.com/sistools/mksock);
-* [**realpath**](https://github.com/sistools/realpath);
+* [**mksock**](https://github.com/sistools/mksock) (Unix-only);
+* [**ReadDebugString**](https://github.com/sistools/ReadDebugString) (Windows-only);
+* [**realpath**](https://github.com/sistools/realpath) (Windows-only);
 * [**rstrip**](https://github.com/sistools/rstrip);
+* [**WriteDebugString**](https://github.com/sistools/WriteDebugString) (Windows-only);
 
 
 ### License
