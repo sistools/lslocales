@@ -4,7 +4,7 @@
  * Purpose: Public API for lslocales.
  *
  * Created: 20th January 2021
- * Updated: 27th August 2026
+ * Updated: 1st September 2026
  *
  * Home:    https://github.com/sistools/lslocales/
  *
@@ -82,7 +82,7 @@
 
 #define SISTOOL_LSLOCALES_VER_MAJOR       0
 #define SISTOOL_LSLOCALES_VER_MINOR       1
-#define SISTOOL_LSLOCALES_VER_PATCH       1
+#define SISTOOL_LSLOCALES_VER_PATCH       2
 #define SISTOOL_LSLOCALES_VER_ALPHABETA   0xFF
 
 #define SISTOOL_LSLOCALES_VER \
