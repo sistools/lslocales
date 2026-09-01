@@ -1,10 +1,15 @@
 # lslocales - Changes <!-- omit in toc -->
 
 
-## 0.1.1 - 1st September 2026
+## 0.1.2 - 1st September 2026
 
 * Rely on transitive **CLASP** linkage via **`sistools-common-c::core`** rather than re-declaring it;
 * Removed the redundant **`Diagnosticism::core`** link entry;
+
+
+## 0.1.1 - 27th August 2026
+
+* Fixed **cmake/BuildType.cmake** so the default `CMAKE_BUILD_TYPE` is set correctly in the CMake cache (`set(CMAKE_BUILD_TYPE … CACHE …)` instead of `set(CACHE CMAKE_BUILD_TYPE …)`);
 
 
 ## 0.1.0 - 24th August 2026
