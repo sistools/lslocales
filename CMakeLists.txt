@@ -264,9 +264,8 @@ target_compile_options(${PROJECT_NAME_LOWER}
 
 target_link_libraries(${PROJECT_NAME_LOWER}
 	PRIVATE
-		CLASP::core
+		# CLASP::core is not needed here: it is a dependency of sistools-common-c::core.
 		sistools-common-c::core
-		Diagnosticism::core
 		$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
 )
 
